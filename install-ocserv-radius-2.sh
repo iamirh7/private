@@ -3,8 +3,6 @@ set -e
 
 echo "[+] ورود اطلاعات اولیه..."
 
-read -p "Enter your domain (e.g., vpn.example.com): " DOMAIN
-read -p "Enter your email (for Let's Encrypt): " EMAIL
 read -p "Enter RADIUS server IP: " RADIP
 read -p "Enter RADIUS secret: " RADSECRET
 
