@@ -3,6 +3,8 @@ set -e
 
 echo "[+] ورود اطلاعات اولیه..."
 
+read -p "Enter your domain (e.g., vpn.example.com): " DOMAIN
+read -p "Enter your email (for Let's Encrypt): " EMAIL
 read -p "Enter RADIUS server IP: " RADIP
 read -p "Enter RADIUS secret: " RADSECRET
 
@@ -30,7 +32,7 @@ echo -e "\e[92m[*] نصب OpenConnect VPN با radcli + RADIUS و دریافت S
 apt update
 apt install -y git build-essential libtool autoconf automake pkg-config libssl-dev \
                 freeradius-utils libpam-radius-auth libnss3-tools software-properties-common \
-                iptables-persistent netfilter-persistent ocserv certbot
+                ocserv
 
 add-apt-repository universe -y
 apt update
