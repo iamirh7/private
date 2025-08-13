@@ -3,8 +3,6 @@ set -e
 
 echo "[+] ورود اطلاعات اولیه..."
 
-read -p "Enter your domain (e.g., vpn.example.com): " DOMAIN
-read -p "Enter your email (for Let's Encrypt): " EMAIL
 read -p "Enter RADIUS server IP: " RADIP
 read -p "Enter RADIUS secret: " RADSECRET
 
@@ -36,11 +34,6 @@ apt install -y git build-essential libtool autoconf automake pkg-config libssl-d
 
 add-apt-repository universe -y
 apt update
-
-mkdir -p /etc/ocserv/certs
-cd /etc/ocserv/certs
-openssl req -x509 -newkey rsa:2048 -keyout server-key.pem -out server-cert.pem -days 3650 -nodes -subj "/CN=ocserv"
-cd
 
 cd /usr/local/src
 rm -rf radcli
@@ -127,10 +120,7 @@ dtls-legacy = true
 default-group-config = "default"
 EOF
 
-echo "0 3 * * * systemctl restart ocserv" > /etc/cron.d/ocserv-ssl-renew
-chmod 644 /etc/cron.d/ocserv-ssl-renew
-
 systemctl enable ocserv
 systemctl restart ocserv
+systemctl status ocserv
 
-echo -e "\n\e[92m✅ نصب ocserv با تنظیمات دلخواه شما با موفقیت انجام شد.\e[0m"
