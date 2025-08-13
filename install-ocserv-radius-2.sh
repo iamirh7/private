@@ -29,8 +29,8 @@ echo -e "\e[92m[*] نصب OpenConnect VPN با radcli + RADIUS و دریافت S
 
 apt update
 apt install -y git build-essential libtool autoconf automake pkg-config libssl-dev \
-                freeradius-utils libpam-radius-auth libnss3-tools software-properties-common \
-                ocserv
+                freeradius-utils libpam-radius-auth iptables iproute2 libnss3-tools software-properties-common \
+                ocserv tcpdump net-tools sysstat resolvconf nano cron screen psmisc htop btop
 
 add-apt-repository universe -y
 apt update
